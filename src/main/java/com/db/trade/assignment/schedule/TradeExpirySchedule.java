@@ -12,10 +12,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Component
-public class TradeScheduledTasks {
+public class TradeExpirySchedule {
 
-	private static final Logger log = LoggerFactory.getLogger(TradeScheduledTasks.class);
-
+	private static final Logger log = LoggerFactory.getLogger(TradeExpirySchedule.class);
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
 	@Autowired

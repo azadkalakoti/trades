@@ -3,6 +3,8 @@ package com.db.trade.assignment.service;
 import com.db.trade.assignment.model.Expired;
 import com.db.trade.assignment.model.Trade;
 import com.db.trade.assignment.repository.TradingRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ import java.time.LocalDate;
 @Service
 public class TradeValidatorService {
 
+    private static final Logger logger = LoggerFactory.getLogger(TradingService.class);
     @Autowired
     private TradingRepository tradingRepository;
 
@@ -35,6 +38,8 @@ public class TradeValidatorService {
                 .forEach( trade -> {
                     if(LocalDate.now().isAfter(trade.getMaturityDate())) {
                         trade.setExpired(Expired.Y);
+                        logger.info("Updated trade for expiry {}", trade.getMaturityDate());
+                        tradingRepository.save(trade);
                     }
                 });
     }

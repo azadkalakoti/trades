@@ -1,8 +1,10 @@
 package com.db.trade.assignment.exception;
 
+import com.db.trade.assignment.model.ServiceResponse;
+
 import java.util.Objects;
 
-public class ErrorResponse {
+public class ErrorResponse extends ServiceResponse {
 
     private String code;
     private String cause;

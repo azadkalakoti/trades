@@ -5,6 +5,7 @@ import com.db.trade.assignment.model.Trade;
 import com.db.trade.assignment.service.TradeValidatorService;
 import com.db.trade.assignment.service.TradingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,11 +46,11 @@ public class TradingController {
     *
      */
     @PostMapping
-    public void createTrade(@RequestBody Trade trade) {
+    public ResponseEntity createTrade(@RequestBody Trade trade) {
 
         if(!tradeValidatorService.isValidTrade(trade)) {
             throw new BusinessException("Invalid Trade! Trade id = " + trade.getTradeId());
         }
-        tradingService.createTrade(trade);
+        return tradingService.createTrade(trade);
     }
 }

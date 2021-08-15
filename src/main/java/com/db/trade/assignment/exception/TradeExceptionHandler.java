@@ -18,7 +18,7 @@ public class TradeExceptionHandler {
 
     private ErrorResponse buildErrorResponse(String reason, Map<String, Object> response) {
         ErrorResponse errorResponse = new ErrorResponse();
-        errorResponse.setCode("INVTRD");
+        errorResponse.setCode("INVALID_TRADE");
         errorResponse.setCause(reason);
         return  errorResponse;
     }
